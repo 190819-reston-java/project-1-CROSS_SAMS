@@ -26,14 +26,12 @@
 
 #nReimbursements {
     text-align: center;
-    text-decoration: underline;
-    
+    text-decoration: underline;    
 }
 
 #pReimbursements {
     text-align: center;
     text-decoration: underline;
-    /* border-radius: 100%; */
 }
 
 #rReimbursements {
@@ -54,7 +52,7 @@
 
 #rReimbursementsBody {
     text-align: center;
-    margin-right: 2%;
+    /* margin-right: 2%; */
     padding: 3%;
     border-left: solid black;
     border-right: solid black;
@@ -62,4 +60,8 @@
 
 #nReimbursementsImg {
     text-align: center;
+}
+
+.row {
+    width: 100%;
 }
