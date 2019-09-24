@@ -14,6 +14,7 @@
 <body>
     <nav class="navbar nav-pills navbar-expand-">
         <a class="navbar-brand">Manager Portal</a>
+        <a class="nav-link" href="employee.html">Employee Homepage</a>
         <a class="nav-link" href="managerHomepage.html">Home</a>
         <a class="nav-link" href="managerReimbursement.html">Reimbursement</a>
         <a class="nav-link active" href="employeeReimbursements.html">Employee Reimbursements</a>
@@ -30,10 +31,8 @@
                             <option>employee2</option>
                             <option>employee3</option>
                         </select>
+                        <input type="submit">
                     </form>
-                </div>
-                <div id="button">
-                    <button class="btn">Select</button>
                 </div>
             </div>
         </div>
@@ -41,7 +40,9 @@
             <div class="column">
                 <div id="returnedEmployeeReimbursements">
                     <h4>Submitted Reimbursements:</h4>
-                    <p>populate with the reimbursements of selected employee</p>
+                    <!-- <p>populate with the reimbursements of selected employee</p> -->
+                    <ul id="eReimbursementsResults">
+                    </ul>
                 </div>
             </div>
         </div>
