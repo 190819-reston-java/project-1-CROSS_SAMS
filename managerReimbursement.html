@@ -14,6 +14,7 @@
 <body>
     <nav class="navbar nav-pills navbar-expand-">
         <a class="navbar-brand">Manager Portal</a>
+        <a class="nav-link" href="employee.html">Employee Homepage</a>
         <a class="nav-link" href="managerHomepage.html">Home</a>
         <a class="nav-link active" href="managerReimbursement.html">Reimbursement</a>
         <a class="nav-link" href="employeeReimbursements.html">Employee Reimbursements</a>
@@ -31,15 +32,16 @@
                         </select>
                         <div id="rAmount">
                             <label for="rAmount">Reimbursement amount: $</label>
-                            <input type="number" name="rAmount" placeholder="x,xxx.xx">
+                            <input type="number" name="rAmount" placeholder="x,xxx.xx" required>
                         </div>
                         <label for="rDate">Date of the requested reimbursement:</label>
-                        <input type="date" name="rDate">
+                        <input type="date" name="rDate" required>
                         <div id="nReimbursementsImg">
                             <img src="upload">
                         </div>
                         <div id="button">
                             <button type="submit" class="btn">Submit</button>
+                            <button type="reset" class="btn">Clear</button>
                         </div>
                     </form>
                 </div>

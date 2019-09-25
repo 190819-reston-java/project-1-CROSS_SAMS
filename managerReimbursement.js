@@ -37,8 +37,6 @@ function getPendingObjects(reason, amount, date, onSuccess) {
           let response = xhr.response;
           console.log(`Response received: ${response}`);
     
-          // Before we declare victory and call onSuccess, let's
-          // check the status code:
           if(xhr.status >= 200 && xhr.status < 300) {
             onSuccess(response);
           } else {

@@ -18,6 +18,8 @@ reimbursementForm.addEventListener("submit", (event) => {
         let pendingObjects = JSON.parse(jsonString);
         console.log(pendingObjects);
 
+        
+
         pendingReimbursements.innerHTML = "";
 
         for(let k in pendingObjects) {

@@ -22,9 +22,6 @@
     <div id="title">
         <h4>Welcome to the expense reimbursement page!</h4>
     </div>
-    <!-- <div id="button">
-        <button class="btn">New Reimbursement Request</button>
-    </div> -->
     <div class="row">
         <div class="col-md-4">
             <div class="column">
@@ -38,15 +35,16 @@
                     </select>
                     <div id="rAmount">
                         <label for="rAmount">Reimbursement amount: $</label>
-                        <input type="number" name="rAmount" placeholder="x,xxx.xx">
+                        <input type="number" name="rAmount" placeholder="x,xxx.xx" required>
                     </div>
                     <label for="rDate">Date of the requested reimbursement:</label>
-                    <input type="date" name="rDate">
+                    <input type="date" name="rDate" required>
                     <div id="nReimbursementsImg">
                         <img src="upload">
                     </div>
                     <div id="button">
                         <button class="btn">Submit</button>
+                        <input class="btn" type="reset">
                     </div>
                 </form>
             </div>
