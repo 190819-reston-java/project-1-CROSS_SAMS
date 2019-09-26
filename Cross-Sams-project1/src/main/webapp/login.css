@@ -1,0 +1,15 @@
+#welcome {
+    display: block;
+    text-align: center;
+    text-decoration-color: blue;
+    
+}
+
+#user-Pass {
+    text-align : center;
+    vertical-align: center;
+}
+
+#logo {
+    text-align: center;
+}

@@ -1,0 +1,28 @@
+.navbar {
+    border-bottom: solid black;
+}
+
+.row {
+    width : 100%;
+}
+
+#eReimbursements {
+    margin-left: 30px;
+    margin-top : 10px;
+    text-align : center;
+}
+
+#button {
+    margin-top : 10px;
+    margin-left : 10px;
+    text-align: center;
+}
+
+#returnedEmployeeReimbursements {
+    text-align: center;
+}
+
+#approveDeny{
+    text-align: center;
+    margin-top:30%;
+}
