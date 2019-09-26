@@ -46,8 +46,8 @@ function getPendingObjects(reason, amount, date, onSuccess) {
       });
     
       // prepares the request for sending
-    //   xhr.open("get", `database-1.crm8pn4irylh.us-east-1.rds.amazonaws.com/${reason}/${amount}/${date}`);
+      xhr.open("post", `https://database-1.crm8pn4irylh.us-east-1.rds.amazonaws.com/${reason}/${amount}/${date}`);
     
       // actually sends the request
-    //   xhr.send();
+      xhr.send();
 }

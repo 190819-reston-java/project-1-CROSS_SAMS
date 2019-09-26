@@ -26,7 +26,7 @@
         <h3>Employee Information</h3>
     </div>
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-sm-4">
             <!-- potentially switch to 2 "2" columns and right align returned info -->
             <div id="jTitle">
                 <h5>Position:</h5>
@@ -43,12 +43,23 @@
             <div id="pNumber">
                 <h5>Phone Number:</h5>
             </div>
-            <div id="lButton">
-                <button class="btn">Update Information</button> 
+            <!-- <div id="lButton">
+                <button class="btn">Update Information</button>
+            </div> -->
+            <div id="popup" class="popup" onclick="updateInfo()">Update Information
+                <form class="popupform" id="updatePopup">
+                    <h5>Email Address:</h5>
+                    <input type="email" name="uEmail" placeholder="email@something.com">
+                    <h5>Address:</h5>
+                    <input type="text" name="uAddress" placeholder="Address, City, State, Zip">
+                    <h5>Phone Number:</h5>
+                    <input type="number" name="uPhone" placeholder="###-###-####">
+                    <input id="updateSubmit" type="submit" class="btn" name="uSubmit">
+                </form>
             </div>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-sm-4">
             <div class="mid">
                 <p>generic business photo or company logo</p>
             </div>

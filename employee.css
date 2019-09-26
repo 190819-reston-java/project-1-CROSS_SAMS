@@ -58,3 +58,40 @@ margin-bottom: 5%;
 #lButton {
     margin-left: 10px;
 }
+
+#updateSubmit {
+    margin-top : 5px;
+}
+
+#popup {
+    background: lightgray;
+    padding : 10px;
+    border-radius: 10px;
+}
+
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+.popup .popupform {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+  }

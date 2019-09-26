@@ -34,13 +34,12 @@ function getPendingObjects(reason, amount, date, onSuccess) {
     let xhr = new XMLHttpRequest();
 
     xhr.addEventListener("readystatechange", () => {
-        // Here we can do granualar things, but we'll just check for 4
+        
         if(xhr.readyState === 4) {
           let response = xhr.response;
           console.log(`Response received: ${response}`);
     
-          // Before we declare victory and call onSuccess, let's
-          // check the status code:
+        
           if(xhr.status >= 200 && xhr.status < 300) {
             onSuccess(response);
           } else {
