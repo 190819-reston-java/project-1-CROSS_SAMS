@@ -22,22 +22,28 @@ public class Login extends HttpServlet {
 
             if(doa.loginManager(email, password) != null)
             {
-                RequestDispatcher rd = request.getRequestDispatcher("managerHomepage.html");
-                rd.forward(request, response);
-            }
-            else
-            {
-                out.println("<font color='red'><b>You have entered incorrect password</b></font>");
-                RequestDispatcher rd = request.getRequestDispatcher("login.html");
-                rd.include(request, response);
-            }
-        } catch (SQLException e) {
-			e.printStackTrace();
+                RequestDispatcher redirect = request.getRequestDispatcher("managerHomepage.html");
+                redirect.forward(request, response);
+            	}
+            
+	            else if(doa.loginEmployee(email, password) != null) {
+		            	
+		            	 RequestDispatcher redirect = request.getRequestDispatcher("reimbursement.html");
+		                 redirect.forward(request, response);
+		            }
+		            else
+		            {
+		                out.println("<font color='red'><b>Sorry Incorrect Password try again...</b></font>");
+		                RequestDispatcher redirect = request.getRequestDispatcher("login.html");
+		                redirect.include(request, response);
+		            	}
+			        
+	        } catch (SQLException e) {
+						e.printStackTrace();
+						}
+			    
+		    finally {            
+		    out.close();
+			}
+		  }
 		}
-        finally {            
-            out.close();
-        }
-    }
-}
-        
-    

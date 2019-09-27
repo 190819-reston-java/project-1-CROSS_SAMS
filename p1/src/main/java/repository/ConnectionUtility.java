@@ -35,7 +35,7 @@ public class ConnectionUtility {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		System.out.println("CONNECTED");
+		
 		return connection;
 	}
 }

@@ -47,9 +47,9 @@ public class Dao{
 						
 					return manager;
 				}
+		
 		public  Employee loginEmployee(String email, String password) throws SQLException {
 			try {
-				ResultSet resultset = null;
 				try (Connection connection = ConnectionUtility.getConnection(); 
 					PreparedStatement preparedstatement = connection.prepareStatement(EMPLOYEESQL);) {
 					preparedstatement.setString(1, email);
