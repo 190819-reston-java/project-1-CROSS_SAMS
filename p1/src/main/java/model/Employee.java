@@ -41,5 +41,11 @@ public class Employee {
 	public void setPhoneNumber(String phoneNumber) {
 		PhoneNumber = phoneNumber;
 	}
+	
+	@Override
+	public String toString() {
+		return "Employee [EmployeeName=" + EmployeeName + ", Email=" + Email + ", Adress=" + Adress + ", Password="
+				+ Password + ", PhoneNumber=" + PhoneNumber + "]";
+	}
 
 }

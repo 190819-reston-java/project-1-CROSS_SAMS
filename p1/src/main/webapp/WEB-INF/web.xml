@@ -23,6 +23,18 @@
 	<description></description>
 	<servlet-class>servlet.Reimbursement</servlet-class>
 </servlet>
+<servlet>
+	<servlet-name>Logout</servlet-name>
+	<display-name>Logout</display-name>
+	<description></description>
+	<servlet-class>servlet.Logout</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>Employees</servlet-name>
+	<display-name>Employees</display-name>
+	<description></description>
+	<servlet-class>servlet.Employees</servlet-class>
+</servlet>
 
 
 <servlet-mapping>
@@ -36,5 +48,13 @@
 <servlet-mapping>
 	<servlet-name>Reimbursement</servlet-name>
 	<url-pattern>/Reimbursement</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>Logout</servlet-name>
+	<url-pattern>/Logout</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>Employees</servlet-name>
+	<url-pattern>/Employees</url-pattern>
 </servlet-mapping>
 </web-app>
