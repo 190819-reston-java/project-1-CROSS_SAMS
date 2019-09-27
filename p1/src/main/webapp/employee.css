@@ -1,0 +1,60 @@
+.navbar {
+    border-bottom: solid black;
+}
+
+#title {
+    text-align: center;
+    padding: 2px;
+    margin-top: 10px;
+}
+
+#eInfo {
+    text-align: center;
+    margin-top: 5px;
+    text-decoration: underline;
+}
+
+#jTitle {
+margin-bottom: 5%;
+}
+
+#name {
+    margin-bottom: 5%;
+}
+
+#email {
+    margin-bottom: 5%;
+}
+
+#address {
+    margin-bottom: 5%;
+}
+
+#pNumber {
+    margin-bottom: 5%;
+}
+
+#name {
+    margin-bottom: 5%;
+}
+
+#pic {
+    text-align: center;
+}
+
+.row {
+    margin: 5%;
+}
+
+.mid {
+    text-align: center;
+}
+
+#button {
+    text-align: center;
+    padding-top: 15px;
+}
+
+#lButton {
+    margin-left: 10px;
+}
