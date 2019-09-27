@@ -73,4 +73,28 @@ public class Doa{
 				}
 		
 			}
+
+		public boolean nReimbursement(Reimbursement r) {
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			
+			String query = "INSERT INTO eDatabase VALUES (DEFAULT, ?, ?, ?);";
+			
+			try {
+				conn = connectionUtility.getConnection();
+				stmt = conn.prepareStatement(query);
+				stmt.setString(1, r.getReason());
+				stmt.setString(2, r.getAmount());
+				stmt.setString(3, r.getDate());
+				stmt.execute();
+			} catch (SQLException r) {
+				e.printStackTrace();
+				return false;
+			} finally {
+				StreamCloser.close(stmt);
+				StreamCloser.close(conn);
+			}
+			
+			return true;
+		}
 		

@@ -26,7 +26,7 @@
         <div class="col-md-4">
             <div class="column">
                 <div id="nReimbursements">New Reimbusements</div>
-                <form id="reimbursementForm">
+                <form id="reimbursementForm" method = "POST">
                     <label for="rType">What type of reimbursement are you seeking?</label>
                     <select name="rType">
                         <option>Travel</option>
@@ -39,11 +39,12 @@
                     </div>
                     <label for="rDate">Date of the requested reimbursement:</label>
                     <input type="date" name="rDate" required>
-                    <div id="nReimbursementsImg">
+                    <!-- <div id="nReimbursementsImg">
                         <img src="upload">
-                    </div>
+                    </div> -->
                     <div id="button">
-                        <button class="btn">Submit</button>
+                        <!-- <button class="btn">Submit</button> -->
+                        <input type="submit" class="btn">
                         <input class="btn" type="reset">
                     </div>
                 </form>

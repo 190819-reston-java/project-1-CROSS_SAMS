@@ -2,9 +2,8 @@
 
 console.log("login test");
 
-button.addEventListener("click", ()=>{
+button.addEventListener("submit", ()=>{
     //insert send/receive & landing page for login
-
 });
 
 let login = document.querySelector(".user&Pass");
