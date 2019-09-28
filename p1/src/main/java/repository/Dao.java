@@ -20,7 +20,7 @@ public class Dao{
 	String PHONE_NUMBER = "phone_number";
 	String MANAGERSQL = "SELECT * FROM public.manager_table WHERE email = ? AND manager_password = ?;";
 	String EMPLOYEESQL = "SELECT * FROM public.employee_table WHERE email = ? AND employee_password = ?;";
-	String TOTAL_EMPLOYEES = "Select * FROM public.employee_table ;";
+	String TOTAL_EMPLOYEES = "SELECT * FROM public.employee_table;";
 	Manager manager = null;
 	Employee employee = null;
 	ResultSet resultset = null;
@@ -77,8 +77,8 @@ public class Dao{
 					return employee;
 				}	
 		
-		public  List<Employee> Employees() throws SQLException {
-				ArrayList<Employee> employees = new ArrayList<Employee>();
+		public  List<Employee> totalEmployees() throws SQLException {
+				List<Employee> employees = new ArrayList<Employee>();
 				try (Connection connection = ConnectionUtility.getConnection(); 
 					PreparedStatement preparedstatement = connection.prepareStatement(TOTAL_EMPLOYEES);) {
 						if(preparedstatement.execute()) {
