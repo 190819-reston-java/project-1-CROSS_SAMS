@@ -26,7 +26,7 @@
         <div class="col-md-4">
             <div class="column">
                 <div id="nReimbursements">New Reimbusements</div>
-                <form id="reimbursementForm" method = "POST">
+                <form id="reimbursementForm">
                     <label for="rType">What type of reimbursement are you seeking?</label>
                     <select name="rType">
                         <option>Travel</option>
@@ -56,7 +56,10 @@
             </div>
             <div id="pReimbursementsBody">
                 <p>Insert later</p>
+                <button id="get-pending-reimbursements">View Pending Reimbursements</button>
                 <ul id="pendingReimbursements">
+                    <form id="update-reimbursements" hidden>
+                        </form>
 
                 </ul>
             </div>
@@ -68,7 +71,7 @@
             <div id="rReimbursementsBody">
                 <p>Insert Later</p>
                 <ul id="resolvedReimbursements">
-                    
+
                 </ul>
             </div>
         </div>
