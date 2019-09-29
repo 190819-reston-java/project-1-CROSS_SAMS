@@ -7,7 +7,7 @@
 
 	<servlet>
 		<servlet-name>Project1</servlet-name>
-		<servlet-class>com.revature.project1.Project1</servlet-class>
+		<servlet-class>com.revature.Controller.Project1Controller</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
