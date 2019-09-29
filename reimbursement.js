@@ -128,12 +128,6 @@ let newDisplay = (reimbursement) => {
 let createLi = (reimbursement) => {
 
   let li = document.createElement("li");
-  li.innerText = `Reason: ${reimbursement.reason} Amount: ${reimbursement.amount} Date: ${reimbursement.date}`;
-  li.addEventListener("click", () => {
-    updateReimbursement.reason.value = reimbusement.reason;
-    updateReimbursement.amount.value = reimbusement.amount;
-    updateReimbursement.date.value = reimbusement.date;
-    newDisplay();
-  });
+  li.innerText = `Reason: ${reimbursement.reason} Amount: $${reimbursement.amount} Date: ${reimbursement.date}`;
   pendingReimbursements.append(li);
 }

@@ -20,56 +20,60 @@
         <a class="nav-link" href="employeeReimbursements.html">Employee Reimbursements</a>
     </nav>
     <div class="row">
-            <div class="col-md-4">
-                <div class="column">
-                    <div id="nReimbursements">New Reimbusements</div>
-                    <form id="reimbursementForm">
-                        <label for="rType">What type of reimbursement are you seeking?</label>
-                        <select name="rType">
-                            <option>Travel</option>
-                            <option>Equipment</option>
-                            <option>Other</option>
-                        </select>
-                        <div id="rAmount">
-                            <label for="rAmount">Reimbursement amount: $</label>
-                            <input type="number" name="rAmount" placeholder="x,xxx.xx" required>
-                        </div>
-                        <label for="rDate">Date of the requested reimbursement:</label>
-                        <input type="date" name="rDate" required>
-                        <div id="nReimbursementsImg">
-                            <img src="upload">
-                        </div>
-                        <div id="button">
-                            <button type="submit" class="btn">Submit</button>
-                            <button type="reset" class="btn">Clear</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div id="pReimbursements">
-                    <p>Pending Reimbursements</p>
-                    
-                </div>
-                <div id="pReimbursementsBody">
-                    <p>Insert later</p>
-                    <ul id="pendingReimbursements">
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div id="rReimbursements">
-                    <p>Resolved Reimbusements</p>
-                </div>
-                <div id="rReimbursementsBody">
-                    <p>Insert Later</p>
-                    <ul id="resolvedReimbursements">
-                    </ul>
-                </div>
+        <div class="col-md-4">
+            <div class="column">
+                <div id="nReimbursements">New Reimbusements</div>
+                <form id="reimbursementForm">
+                    <label for="rType">What type of reimbursement are you seeking?</label>
+                    <select name="rType">
+                        <option>Travel</option>
+                        <option>Equipment</option>
+                        <option>Other</option>
+                    </select>
+                    <div id="rAmount">
+                        <label for="rAmount">Reimbursement amount: $</label>
+                        <input type="number" name="rAmount" placeholder="x,xxx.xx" required>
+                    </div>
+                    <label for="rDate">Date of the requested reimbursement:</label>
+                    <input type="date" name="rDate" required>
+                    <div id="nReimbursementsImg">
+                        <img src="upload">
+                    </div>
+                    <div id="button">
+                        <!-- <button type="submit" class="btn">Submit</button> -->
+                        <input type="submit" class="btn">
+                        <button type="reset" class="btn">Clear</button>
+                    </div>
+                </form>
             </div>
         </div>
+        <div class="col-md-4">
+            <div id="pReimbursements">
+                <p>Pending Reimbursements</p>
 
-        <script src="managerReimbursement.js"></script>
+            </div>
+            <div id="pReimbursementsBody">
+                <!-- <p>Insert later</p> -->
+                <button id="get-pending-reimbursements">View Pending Reimbursements</button>
+                <ul id="pendingReimbursements">
+                    <form id="update-reimbursements" hidden>
+                    </form>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div id="rReimbursements">
+                <p>Resolved Reimbusements</p>
+            </div>
+            <div id="rReimbursementsBody">
+                <p>Insert Later</p>
+                <ul id="resolvedReimbursements">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="managerReimbursement.js"></script>
 </body>
 
 </html>
