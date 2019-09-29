@@ -12,8 +12,7 @@ import repository.Dao;
 
 public class Employees extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	
+		
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -38,9 +37,27 @@ public class Employees extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		Dao dao = new Dao();
 		try {
-			String employees = dao.totalEmployees().toString();
-			response.getWriter().write(employees);
-			response.setStatus(200);
+			response.getWriter().println("<html>");
+	        response.getWriter().println("<head>");
+	        response.getWriter().println("<title>Current Employees</title>");
+	        response.getWriter().println("</head>");
+	        response.getWriter().println("<body>");
+	        response.getWriter().println("<table border=\"3\">");
+	        
+	        
+	        for (int i = 0; i < dao.totalEmployees().size(); i++) {
+	        	response.getWriter().println("<tr>");	
+	        	 response.getWriter().println("<td>" + dao.totalEmployees().get(i).getEmpoloyeeName()+ "</td>");
+	             response.getWriter().println("<td>" + dao.totalEmployees().get(i).getEmail()+ "</td>");
+	             response.getWriter().println("<td>" + dao.totalEmployees().get(i).getPhoneNumber()+ "</td>");
+		        response.getWriter().println("</tr>");
+	        }
+	       
+	        response.getWriter().println("</table>");
+	        response.getWriter().println("</body>");
+	        response.getWriter().println("</html>"); 
+
+			
 			
 		} catch (SQLException e) {
 				response.setStatus(500);
