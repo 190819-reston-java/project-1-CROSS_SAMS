@@ -10,7 +10,7 @@ const oUrl = `${baseUrl}/reimbursements`;
 let newReimbursement = document.getElementById("reimbursementForm");
 let pendingReimbursements = document.getElementById("pendingReimbursements");
 let getPendingReimbursements = document.getElementById("get-pending-reimbursements");
-let updateReimbursement = document.getElementById("update-reimbursements")
+let updateReimbursement = document.getElementById("update-reimbursements");
 
 newReimbursement.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -129,5 +129,11 @@ let createLi = (reimbursement) => {
 
   let li = document.createElement("li");
   li.innerText = `Reason: ${reimbursement.reason} Amount: $${reimbursement.amount} Date: ${reimbursement.date}`;
+  // li.addEventListener("click", () => {
+  //   updateReimbursement.reason.value = reimbusement.reason;
+  //   updateReimbursement.amount.value = reimbusement.amount;
+  //   updateReimbursement.date.value = reimbusement.date;
+  //   newDisplay();
+  // });
   pendingReimbursements.append(li);
 }
