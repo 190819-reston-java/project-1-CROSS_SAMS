@@ -44,7 +44,7 @@ public class Employees extends HttpServlet {
 	        response.getWriter().println("<body>");
 	        response.getWriter().println("<table border=\"3\">");
 	        
-	        
+	        response.getWriter().println("<h2> Employees</h2>");
 	        for (int i = 0; i < dao.totalEmployees().size(); i++) {
 	        	response.getWriter().println("<tr>");	
 	        	 response.getWriter().println("<td>" + dao.totalEmployees().get(i).getEmpoloyeeName()+ "</td>");
