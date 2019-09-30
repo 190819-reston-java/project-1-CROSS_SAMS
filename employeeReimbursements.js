@@ -16,23 +16,50 @@ let updateReimbursement = document.getElementById("update-reimbursements");
 eReimbursements.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  let selectedEmployee = eReimbursements.ePicker.value;
-  console.log(`user selected: ${selectedEmployee}`);
+  // let selectedEmployee = eReimbursements.ePicker.value;
+  // console.log(`user selected: ${selectedEmployee}`);
 
-  getPendingReimbursements.addEventListener("click", (event) => {
+  const ePicker = eReimbursements.ePicker.value;
+  console.log(`user selected: ${ePicker}`);
+
+
+  if(ePicker=='All') {
     fetch(oUrl, { method: "GET" })
-      .then((response) => {
-        return response.json();
-      })
-      .then((reimbursementsJson) => {
-        newDisplay();
-        for (let reimbursement in reimbursementsJson) {
-          console.log(reimbursementsJson[reimbursement]);
-          createLi(reimbursementsJson[reimbursement]);
-        }
-      })
-      .catch(console.log)
-  });
+    .then((response) => {
+      return response.json();
+    })
+    .then((reimbursementsJson) => {
+      newDisplay();
+      for (let reimbursement in reimbursementsJson) {
+        console.log(reimbursementsJson[reimbursement]);
+        createLi(reimbursementsJson[reimbursement]);
+      }
+    })
+    .catch(console.log)
+  } else if (ePicker=='employee1') {
+    console.log("employee1");
+  } else if (ePicker=='employee2') {
+    console.log("employee2");
+  } else if (ePicker=='employee3') {
+    console.log("employee3");
+  } else {
+    console.log("No Employee Selected. Something went wrong :(")
+  }
+
+  // getPendingReimbursements.addEventListener("click", (event) => {
+  //   fetch(oUrl, { method: "GET" })
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((reimbursementsJson) => {
+  //       newDisplay();
+  //       for (let reimbursement in reimbursementsJson) {
+  //         console.log(reimbursementsJson[reimbursement]);
+  //         createLi(reimbursementsJson[reimbursement]);
+  //       }
+  //     })
+  //     .catch(console.log)
+  // });
   
 
   
@@ -71,20 +98,45 @@ eReimbursements.addEventListener("submit", (event) => {
 //   });
 // }
 
-getPendingReimbursements.addEventListener("click", (event) => {
-  fetch(oUrl, { method: "GET" })
-    .then((response) => {
-      return response.json();
-    })
-    .then((reimbursementsJson) => {
-      newDisplay();
-      for (let reimbursement in reimbursementsJson) {
-        console.log(reimbursementsJson[reimbursement]);
-        createLi(reimbursementsJson[reimbursement]);
-      }
-    })
-    .catch(console.log)
-});
+// getPendingReimbursements.addEventListener("click", (event) => {
+//   const ePicker = document.getElementsByName("ePicker");
+
+//   if(ePicker==='All') {
+//     fetch(oUrl, { method: "GET" })
+//     .then((response) => {
+//       return response.json();
+//     })
+//     .then((reimbursementsJson) => {
+//       newDisplay();
+//       for (let reimbursement in reimbursementsJson) {
+//         console.log(reimbursementsJson[reimbursement]);
+//         createLi(reimbursementsJson[reimbursement]);
+//       }
+//     })
+//     .catch(console.log)
+//   } else if (ePicker==='employee1') {
+//     console.log("employee1");
+//   } else if (ePicker==='employee2') {
+//     console.log("employee2");
+//   } else if (ePicker==='employee3') {
+//     console.log("employee3");
+//   } else {
+//     console.log("no option")
+//   }
+  
+//   // fetch(oUrl, { method: "GET" })
+//   //   .then((response) => {
+//   //     return response.json();
+//   //   })
+//   //   .then((reimbursementsJson) => {
+//   //     newDisplay();
+//   //     for (let reimbursement in reimbursementsJson) {
+//   //       console.log(reimbursementsJson[reimbursement]);
+//   //       createLi(reimbursementsJson[reimbursement]);
+//   //     }
+//   //   })
+//   //   .catch(console.log)
+// });
 
 updateReimbursement.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -103,3 +155,28 @@ updateReimbursement.addEventListener("submit", (event) => {
     })
     .catch(console.error);
 });
+
+let reimbursementFromForm = (form) => {
+  let nReimbursement = {};
+  nReimbursement.reason = form.rType.value || "some reason";
+  nReimbursement.amount = form.rAmount.value || "1000";
+  nReimbursement.date = form.rDate.value || "1_1_2019";
+  return nReimbursement;
+}
+
+let newDisplay = (reimbursement) => {
+  eReimbursementsResults.innerHTML = "";
+};
+
+let createLi = (reimbursement) => {
+
+  let li = document.createElement("li");
+  li.innerText = `Reason: ${reimbursement.reason} Amount: $${reimbursement.amount} Date: ${reimbursement.date}`;
+  // li.addEventListener("click", () => {
+  //   updateReimbursement.reason.value = reimbusement.reason;
+  //   updateReimbursement.amount.value = reimbusement.amount;
+  //   updateReimbursement.date.value = reimbusement.date;
+  //   newDisplay();
+  // });
+  eReimbursementsResults.append(li);
+};
