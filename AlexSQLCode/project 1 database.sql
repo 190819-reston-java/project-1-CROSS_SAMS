@@ -1,7 +1,9 @@
 --CREATE DATABASE tDatabase;
 --DROP DATABASE tDatabase;
 
+DROP TABLE employee_table;
 DROP TABLE tDatabase;
+DROP TABLE manager_table;
 --DROP TABLE employees;
 
 --CREATE TABLE rDatabase (
@@ -16,28 +18,41 @@ CREATE TABLE tdatabase (
 	id serial NOT NULL UNIQUE,
 	Reason TEXT NOT NULL,
 	Amount NUMERIC NOT NULL,
-	Date TEXT NOT NULL
+	Date TEXT NOT NULL,
+	employee TEXT,
+	status TEXT,
+	manager TEXT
 );
 
---CREATE TABLE employees (
---	id serial NOT NULL UNIQUE,
---	name TEXT NOT NULL UNIQUE,
---	email TEXT NOT NULL UNIQUE,
---	address TEXT NOT NULL UNIQUE,
---	PASSWORD TEXT NOT NULL,
---	phone_number TEXT NOT NULL UNIQUE,
---	reason TEXT NOT NULL,
---	amount NUMERIC NOT NULL,
---	rdate date NOT NULL
---);
+CREATE TABLE EMPLOYEE_TABLE(
+	id serial NOT NULL UNIQUE,
+	NAME VARCHAR(12),
+	EMAIL VARCHAR(30),
+	ADDRESS VARCHAR(12),
+	password VARCHAR(12),
+	phone VARCHAR(13)
+);
 
---INSERT INTO tdatabase (Reason, Amount, date) VALUES ('idk', '500', '8-30-2019');
---INSERT INTO tdatabase (Reason, Amount, date) VALUES ('test', '9000', '6-30-2019');
---INSERT INTO employees (name, email, address, PASSWORD, phone_number, reason, amount, rdate) VALUES ('test', 'me@email.cim', '1057 new market st', 'pas', '757-658-3718', 'idk', '500', '8_30_2019');
+CREATE TABLE MANAGER_TABLE(
+	id serial NOT NULL UNIQUE,
+	NAME VARCHAR(12),
+	EMAIL VARCHAR(30),
+	ADDRESS VARCHAR(12),
+	MANAGER_PASSWORD VARCHAR(12),
+	PHONE_NUMBER VARCHAR(13)
+);
+
+INSERT INTO tdatabase (Reason, Amount, date) VALUES ('idk', '500', '8-30-2019');
+INSERT INTO EMPLOYEE_TABLE (name, email, address, password, phone) VALUES ('name', 'anemail@email.com', '10 m st.', 'pass', '757-303-9584');
+INSERT INTO EMPLOYEE_TABLE (name, email, address, password, phone) VALUES ('name3', 'anotheremail@email.com', '30 m st.', 'passwords', '757-303-9584');
+INSERT INTO MANAGER_TABLE (name, email, address, manager_password, phone_number) VALUES ('name2', 'aemail@email.com', '20 m st.', 'password', '757-303-1853');
+
 
 SELECT *
 FROM tdatabase;
 
---SELECT *
---FROM employees;
+SELECT *
+FROM EMPLOYeE_TABLE;
 
+SELECT *
+FROM MANAGER_TABLE;
