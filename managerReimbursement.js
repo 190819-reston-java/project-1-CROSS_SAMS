@@ -1,6 +1,6 @@
 'use strict';
 
-console.log("manager reimbursement test");
+console.log("reimburse");
 
 const baseUrl = "/localproject1/p1Api";
 // const baseUrl = "http://localhost:8080/localproject1/reimbursements"
@@ -14,6 +14,7 @@ let getPendingReimbursements = document.getElementById("get-pending-reimbursemen
 let updateReimbursement = document.getElementById("update-reimbursements");
 let getResolvedReimbursements = document.getElementById("get-resolved-reimbursements");
 let resolvedReimbursements = document.getElementById("resolved-reimbursements");
+
 
 newReimbursement.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -32,6 +33,11 @@ newReimbursement.addEventListener("submit", (event) => {
       }
     })
     .catch(console.error);
+  // let reason = reimbursementForm.rType.value;
+  // let amount = reimbursementForm.rAmount.value;
+  // let date = reimbursementForm.rDate.value;
+
+  // console.log(`user selected ${reason}, ${amount}, ${date}`);
 });
 
 getPendingReimbursements.addEventListener("click", (event) => {
@@ -83,28 +89,48 @@ getResolvedReimbursements.addEventListener("click", (event) => {
     .catch(console.log)
 })
 
-// function getPendingObjects(reason, amount, date, onSuccess) {
+
+// getPendingReimbursements(reason, amount, date, (jsonString) => {
+//   let pendingReimbursements = JSON.parse(jsonString);
+//   console.log(pendingObjects);
+
+
+
+//   pendingReimbursements.innerHTML = "";
+
+//   for (let k in pendingOReimbursements) {
+//     let resultItem = document.createElement("li");
+//     resultItem.innerText = `${k} : ${pendingObjects[k]}`;
+//     pendingReimbursements.appendChild(resultItem);
+//   }
+//   // });
+
+
+//   function getPendingReimbursements(reason, amount, date, onSuccess) {
 //     let xhr = new XMLHttpRequest();
 
 //     xhr.addEventListener("readystatechange", () => {
-//         // Here we can do granualar things, but we'll just check for 4
-//         if(xhr.readyState === 4) {
-//           let response = xhr.response;
-//           console.log(`Response received: ${response}`);
 
-//           if(xhr.status >= 200 && xhr.status < 300) {
-//             onSuccess(response);
-//           } else {
-//             console.error(`Failure with status ${xhr.status}`);
-//           }
+//       if (xhr.readyState === 4) {
+//         let response = xhr.response;
+//         console.log(`Response received: ${response}`);
+
+
+//         if (xhr.status >= 200 && xhr.status < 300) {
+//           onSuccess(response);
+//         } else {
+//           console.error(`Failure with status ${xhr.status}`);
 //         }
-//       });
+//       }
+//     });
 
-//       // prepares the request for sending
-//       xhr.open("post", `https://database-1.crm8pn4irylh.us-east-1.rds.amazonaws.com/${reason}/${amount}/${date}`);
+//     // prepares the request for sending
+//     xhr.open("POST", `${baseUrl}/${reason}/${amount}/${date}`);
 
-//       // actually sends the request
-//       xhr.send();
+//     // actually sends the request
+//     xhr.send();
+
+//   }
 
 
 let reimbursementFromForm = (form) => {
@@ -144,7 +170,7 @@ let createLi2 = (reimbursement) => {
   //   updateReimbursement.reason.value = reimbusement.reason;
   //   updateReimbursement.amount.value = reimbusement.amount;
   //   updateReimbursement.date.value = reimbusement.date;
-    newDisplay2();
+  //   newDisplay();
   // });
   resolvedReimbursements.append(li);
 }
