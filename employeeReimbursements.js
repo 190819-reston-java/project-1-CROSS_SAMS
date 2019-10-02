@@ -3,8 +3,7 @@
 console.log("employee Reimbursement request test");
 
 const baseUrl = "/localproject1/p1Api";
-// const baseUrl = "http://localhost:8080/localproject1/reimbursements"
-// const oUrl = `${baseUrl}/tdatabase`;
+
 const oUrl = `${baseUrl}/reimbursements`;
 
 let eReimbursements = document.getElementById("eReimbursements");
@@ -17,9 +16,6 @@ let update = document.getElementById("rUpdate");
 
 eReimbursements.addEventListener("submit", (event) => {
   event.preventDefault();
-
-  // let selectedEmployee = eReimbursements.ePicker.value;
-  // console.log(`user selected: ${selectedEmployee}`);
 
   const ePicker = eReimbursements.ePicker.value;
   console.log(`user selected: ${ePicker}`);
