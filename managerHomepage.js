@@ -3,8 +3,7 @@
 console.log("manager homepage test");
 
 const baseUrl = "/localproject1/p1Api";
-// const baseUrl = "http://localhost:8080/localproject1/reimbursements"
-// const oUrl = `${baseUrl}/tdatabase`;
+
 const oUrl = `${baseUrl}/employees`;
 
 let employeeList = document.getElementById("employee-list");
@@ -61,11 +60,6 @@ getEmployees.addEventListener("click", (event) => {
   
     let li = document.createElement("li");
     li.innerText = `Name: ${employee.name} | Email: $${employee.email} | Address: ${employee.address} | Password: ${employee.password} | Phone: ${employee.phone}`;
-    // li.addEventListener("click", () => {
-    //   updateReimbursement.reason.value = reimbusement.reason;
-    //   updateReimbursement.amount.value = reimbusement.amount;
-    //   updateReimbursement.date.value = reimbusement.date;
-    //   newDisplay();
-    // });
+    
     employeeList.append(li);
   }
