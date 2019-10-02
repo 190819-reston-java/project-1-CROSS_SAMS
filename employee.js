@@ -2,7 +2,7 @@
 
 console.log("test");
 const bUrl = "file:///C:/Users/the2n/Desktop/Revature/Code/Projects/project-1-CROSS_SAMS/"
-const 
+// const 
 
 let button = document.querySelector(".btn");
 let employeeGet = document.getElementById("name");

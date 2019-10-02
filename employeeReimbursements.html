@@ -44,34 +44,38 @@
                     <ul id="eReimbursementsResults">
 
                     </ul>
-                    <form id="update-reimbursements" hidden>
+                    <!-- <form id="update-reimbursements" hidden>
                         <input type="number" name="id" hidden placeholder=0>
                         <input type="text" name="reason" placeholder="reason">
                         <input type="number" name="amount" placeholder="amount">
                         <input type="text" name="date" placeholder="date">
-                        <!-- <input type="text" name="status" placeholder="approved/denied"> -->
                         <select name ="status">
                             <option>Approve</option>
                             <option>Deny</option>
                         </select>
                         <input type="submit" class="btn">
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </div>
     </div>
-    <!-- <div id="rUpdater">
-        <form id="rUpdate" hidden>
-            <input type="text" name="reason" placeholder="reason">
-            <input type="number" name="amount" placeholder="amount">
-            <input type="text" name="date" placeholder="date">
-            <input type="text" name="status" placeholder="approved/denied">
+    <div id="rUpdater">
+        <ul id="rUpdate" hidden>
+
+        </ul>
+        <form id="update-reimbursements" hidden>
+            <span>ID:</span>
+            <input type="number" name="id" placeholder=0 readonly>
+            <input type="text" name="reason" placeholder="reason" hidden>
+            <input type="number" name="amount" placeholder="amount" hidden>
+            <input type="text" name="date" placeholder="date" hidden>
+            <span>Status:</span>
+            <select name="status">
+                <option>Approve</option>
+                <option>Deny</option>
+            </select>
             <input type="submit" class="btn">
         </form>
-    </div> -->
-    <div id="approveDeny">
-        <button class="btn">Approve</button>
-        <button class="btn">Deny</button>
     </div>
 
 
