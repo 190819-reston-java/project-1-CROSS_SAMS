@@ -6,11 +6,15 @@ const baseUrl = "/localproject1/p1Api";
 // const baseUrl = "http://localhost:8080/localproject1/reimbursements"
 // const oUrl = `${baseUrl}/tdatabase`;
 const oUrl = `${baseUrl}/reimbursements`;
+const o2Url = `${baseUrl}/resolvedReimbursements`;
 
 let newReimbursement = document.getElementById("reimbursementForm");
 let pendingReimbursements = document.getElementById("pendingReimbursements");
 let getPendingReimbursements = document.getElementById("get-pending-reimbursements");
 let updateReimbursement = document.getElementById("update-reimbursements");
+let getResolvedReimbursements = document.getElementById("get-resolved-reimbursements");
+let resolvedReimbursements = document.getElementById("resolved-reimbursements");
+
 
 newReimbursement.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -69,6 +73,22 @@ updateReimbursement.addEventListener("submit", (event) => {
     .catch(console.error);
 });
 
+getResolvedReimbursements.addEventListener("click", (event) => {
+  fetch(o2Url, { method: "GET" })
+    .then((response) => {
+      return response.json();
+    })
+    .then((reimbursementsJson) => {
+      // newDisplay();
+      newDisplay2();
+      for (let reimbursement in reimbursementsJson) {
+        console.log(reimbursementsJson[reimbursement]);
+        createLi2(reimbursementsJson[reimbursement]);
+      }
+    })
+    .catch(console.log)
+})
+
 
 // getPendingReimbursements(reason, amount, date, (jsonString) => {
 //   let pendingReimbursements = JSON.parse(jsonString);
@@ -125,6 +145,10 @@ let newDisplay = (reimbursement) => {
   pendingReimbursements.innerHTML = "";
 };
 
+let newDisplay2 = (reimbursement) => {
+  resolvedReimbursements.innerHTML = "";
+};
+
 let createLi = (reimbursement) => {
 
   let li = document.createElement("li");
@@ -136,4 +160,17 @@ let createLi = (reimbursement) => {
   //   newDisplay();
   // });
   pendingReimbursements.append(li);
+}
+
+let createLi2 = (reimbursement) => {
+
+  let li = document.createElement("li");
+  li.innerText = `Reason: ${reimbursement.reason} Amount: $${reimbursement.amount} Date: ${reimbursement.date}`;
+  // li.addEventListener("click", () => {
+  //   updateReimbursement.reason.value = reimbusement.reason;
+  //   updateReimbursement.amount.value = reimbusement.amount;
+  //   updateReimbursement.date.value = reimbusement.date;
+  //   newDisplay();
+  // });
+  resolvedReimbursements.append(li);
 }

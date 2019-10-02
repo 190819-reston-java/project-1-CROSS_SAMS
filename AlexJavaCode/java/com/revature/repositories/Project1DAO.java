@@ -21,7 +21,7 @@ public class Project1DAO implements Project1 {
 		User user = null;
 
 		try (Connection conn = connectionUtility.getConnection()) {
-			String query = "SELECT * FROM tdatabase WHERE id = ?;";
+			String query = "SELECT * FROM employee_table WHERE id = ?;";
 
 			try (PreparedStatement stmt = conn.prepareStatement(query)) {
 				stmt.setInt(1, id);
@@ -69,13 +69,39 @@ public class Project1DAO implements Project1 {
 		}
 	}
 	
+	public Reimbursement getResolvedReimbursement(int id) {
+		Reimbursement reimbursement = null;
+
+		try (Connection conn = connectionUtility.getConnection()) {
+			String query = "SELECT * FROM tdatabase WHERE id = ?;";
+
+			try (PreparedStatement stmt = conn.prepareStatement(query)) {
+				stmt.setLong(1, id);
+				if (stmt.execute()) {
+					try (ResultSet resultSet = stmt.getResultSet()) {
+						if (resultSet.next()) {
+							reimbursement = createReimbursementFromRS(resultSet);
+						}
+					}
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return reimbursement;
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			return reimbursement;
+		}
+	}
+	
 	private User createUserFromRS(ResultSet resultSet) throws SQLException {
 		return new User(
 				resultSet.getInt("id"),
 				resultSet.getString("name"),
-				resultSet.getString("username"),
 				resultSet.getString("email"),
 				resultSet.getString("address"),
+				resultSet.getString("password"),
 				resultSet.getString("phone")
 				);
 	}
@@ -85,7 +111,8 @@ public class Project1DAO implements Project1 {
 				resultSet.getInt("id"),
 				resultSet.getString("reason"),
 				resultSet.getDouble("amount"),
-				resultSet.getString("date")
+				resultSet.getString("date"),
+				resultSet.getString("status")
 				);
 	}
 
@@ -101,7 +128,7 @@ public class Project1DAO implements Project1 {
 		//any resource that is AutoClosable (an interface) can be used with try (resource) {} and it will close itself
 		try (Connection conn = connectionUtility.getConnection()) {
 			statement = conn.prepareStatement(
-					"SELECT * FROM eDatabase WHERE email = ?;");
+					"SELECT * FROM employee_table WHERE email = ?;");
 			//in our PreparedStatement, we set values to be filled in later with ?. We'll set those values using the "index" of the ?, starting at 1
 			
 			//fill in the question mark with name argument
@@ -116,9 +143,9 @@ public class Project1DAO implements Project1 {
 					user = new User(
 							resultSet.getInt("id"),
 							resultSet.getString("name"),
-							resultSet.getString("username"),
 							resultSet.getString("email"),
 							resultSet.getString("address"),
+							resultSet.getString("password"),
 							resultSet.getString("phone")
 							);
 				}
@@ -170,7 +197,44 @@ public class Project1DAO implements Project1 {
 		}
 		return reimbursement;
 	}
-
+	
+	public Reimbursement getResolvedReimbursement(String status) {
+		ResultSet resultSet = null;
+		//prepared statements are better than simple ones
+		PreparedStatement statement = null;
+		
+		Reimbursement reimbursement = null;
+		
+		//try-with-resources
+		//any resource that is AutoClosable (an interface) can be used with try (resource) {} and it will close itself
+		try (Connection conn = connectionUtility.getConnection()) {
+			statement = conn.prepareStatement(
+					"SELECT * FROM tdatabase WHERE status != '';");
+			//in our PreparedStatement, we set values to be filled in later with ?. We'll set those values using the "index" of the ?, starting at 1
+			
+			//fill in the question mark with name argument
+			statement.setString(1, status);
+			
+			//try to execute SQL query
+			if(statement.execute()) {
+				//get the ResultSet
+				resultSet = statement.getResultSet();
+				//check for a single
+				if(resultSet.next()) {
+					reimbursement = createReimbursementFromRS(resultSet);
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+			Close.close(resultSet);
+			Close.close(statement);
+		}
+		return reimbursement;
+	}
+	 
 	@Override
 	public List<User> getUsers() {
 		//statement and resultSet interfaces
@@ -190,7 +254,7 @@ public class Project1DAO implements Project1 {
 					
 					//Statements can execute SQL queries
 					//ResultSet stores the results of a query
-					resultSet = statement.executeQuery("Select * FROM tDatabase;");
+					resultSet = statement.executeQuery("Select * FROM employee_table;");
 							
 					//loop through resultSet		
 					while (resultSet.next()) {
@@ -198,9 +262,9 @@ public class Project1DAO implements Project1 {
 						users.add(new User(
 								resultSet.getInt("id"),
 								resultSet.getString("name"),
-								resultSet.getString("username"),
 								resultSet.getString("email"),
 								resultSet.getString("address"),
+								resultSet.getString("password"),
 								resultSet.getString("phone")
 								));
 					}
@@ -238,17 +302,67 @@ public class Project1DAO implements Project1 {
 			
 			//Statements can execute SQL queries
 			//ResultSet stores the results of a query
-			resultSet = statement.executeQuery("Select * FROM tdatabase;");
+			resultSet = statement.executeQuery("Select * FROM tdatabase");
 					
 			//loop through resultSet		
 			while (resultSet.next()) {
 				//At each row in the ResultSet, do the following:
-				reimbursements.add(new Reimbursement(
-						resultSet.getInt("id"),
-						resultSet.getString("Reason"),
-						resultSet.getDouble("Amount"),
-						resultSet.getString("Date")
-						));
+//				reimbursements.add(new Reimbursement(
+//						resultSet.getInt("id"),
+//						resultSet.getString("Reason"),
+//						resultSet.getDouble("Amount"),
+//						resultSet.getString("Date"),
+//						resultSet.getString("status")
+//						));
+				reimbursements.add(createReimbursementFromRS(resultSet));
+			}
+					
+					
+					
+					
+					
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			//close all open resources to prevent memory leak
+			Close.close(resultSet);
+			Close.close(statement);
+			Close.close(conn);
+		}
+		
+		return reimbursements;
+	}
+	
+	public List<Reimbursement> getResolvedReimbursements() {
+		Statement statement = null;
+		ResultSet resultSet = null;
+		Connection conn = null;
+		
+		//list to return
+		List<Reimbursement> reimbursements = new ArrayList<Reimbursement>();
+		
+		try {
+			//get connection from ConnectionUtil
+			conn = connectionUtility.getConnection();
+					
+			//create statement from connection
+			statement = conn.createStatement();
+			
+			//Statements can execute SQL queries
+			//ResultSet stores the results of a query
+			resultSet = statement.executeQuery("Select * FROM tdatabase WHERE status != '';");
+					
+			//loop through resultSet		
+			while (resultSet.next()) {
+				//At each row in the ResultSet, do the following:
+//				reimbursements.add(new Reimbursement(
+//						resultSet.getInt("id"),
+//						resultSet.getString("Reason"),
+//						resultSet.getDouble("Amount"),
+//						resultSet.getString("Date"),
+//						resultSet.getString("status")
+//						));
+				reimbursements.add(createReimbursementFromRS(resultSet));
 			}
 					
 					
@@ -272,15 +386,15 @@ public class Project1DAO implements Project1 {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		
-		final String query = "INSERT INTO eDatabase VALUES (DEFAULT, ?, ?, ?, ?, ?);";
+		final String query = "INSERT INTO employee_table VALUES (DEFAULT, ?, ?, ?, ?, ?);";
 		
 		try {
 			conn = connectionUtility.getConnection();
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, u.getName());
-			stmt.setString(2, u.getUsername());
-			stmt.setString(3, u.getEmail());
-			stmt.setString(4, u.getAddress());
+			stmt.setString(2, u.getEmail());
+			stmt.setString(3, u.getAddress());
+			stmt.setString(4, u.getPassword());
 			stmt.setString(5, u.getPhone());
 			stmt.execute();
 		} catch (SQLException e) {
@@ -298,7 +412,7 @@ public class Project1DAO implements Project1 {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		
-		final String query = "INSERT INTO tdatabase VALUES (DEFAULT, ?, ?, ?);";
+		final String query = "INSERT INTO tdatabase VALUES (DEFAULT, ?, ?, ?, ?);";
 		
 		try {
 			conn = connectionUtility.getConnection();
@@ -306,6 +420,7 @@ public class Project1DAO implements Project1 {
 			stmt.setString(1, r.getReason());
 			stmt.setDouble(2, r.getAmount());
 			stmt.setString(3, r.getDate());
+			stmt.setString(4, r.getStatus());
 			stmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -323,16 +438,17 @@ public class Project1DAO implements Project1 {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		
-		final String query = "UPDATE eDatabase SET name = ?, username = ?, email = ?, address = ?, phone = ? WHERE id = ?;";
+		final String query = "UPDATE employee_table SET name = ?, email = ?, address = ?, password = ?, phone = ? WHERE id = ?;";
 		
 		try {
 			conn = connectionUtility.getConnection();
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, u.getName());
-			stmt.setString(2, u.getUsername());
-			stmt.setString(3, u.getEmail());
-			stmt.setString(4, u.getAddress());
+			stmt.setString(2, u.getEmail());
+			stmt.setString(3, u.getAddress());
+			stmt.setString(4, u.getPassword());
 			stmt.setString(5, u.getPhone());
+			stmt.setInt(6, u.getId());
 			stmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -350,7 +466,7 @@ public class Project1DAO implements Project1 {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		
-		final String query = "UPDATE tdatabase SET reason = ?, amount = ?, date = ? WHERE id = ?;";
+		final String query = "UPDATE tdatabase SET reason = ?, amount = ?, date = ?, status = ? WHERE id = ?;";
 		
 		try {
 			conn = connectionUtility.getConnection();
@@ -358,7 +474,8 @@ public class Project1DAO implements Project1 {
 			stmt.setString(1, r.getReason());
 			stmt.setDouble(2, r.getAmount());
 			stmt.setString(3, r.getDate());
-			stmt.setInt(4, r.getId());
+			stmt.setString(4, r.getStatus());
+			stmt.setInt(5, r.getId());
 			stmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();

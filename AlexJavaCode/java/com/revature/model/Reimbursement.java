@@ -1,18 +1,20 @@
 package com.revature.model;
 
 public class Reimbursement {
-	
+
 	int id;
 	String reason;
 	double amount;
 	String date;
+	String status;
 
-	public Reimbursement(int id, String reason, double amount, String date) {
+	public Reimbursement(int id, String reason, double amount, String date, String status) {
 		super();
 		this.id = id;
 		this.reason = reason;
 		this.amount = amount;
 		this.date = date;
+		this.status = status;
 	}
 	
 	public Reimbursement() {
@@ -51,19 +53,18 @@ public class Reimbursement {
 		this.date = date;
 	}
 
-	@Override
-	public String toString() {
-		return "Reimbursement [id=" + id + ", reason=" + reason + ", amount=" + amount + ", date=" + date + "]";
+	public String getStatus() {
+		return status;
 	}
 
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
-
-	
-	
-	
-	
-	
-	
-	
+	@Override
+	public String toString() {
+		return "Reimbursement [id=" + id + ", reason=" + reason + ", amount=" + amount + ", date=" + date + ", status="
+				+ status + "]";
+	}
 
 }

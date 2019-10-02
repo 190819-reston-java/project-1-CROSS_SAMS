@@ -73,7 +73,8 @@ getResolvedReimbursements.addEventListener("click", (event) => {
       return response.json();
     })
     .then((reimbursementsJson) => {
-      newDisplay();
+      // newDisplay();
+      newDisplay2();
       for (let reimbursement in reimbursementsJson) {
         console.log(reimbursementsJson[reimbursement]);
         createLi2(reimbursementsJson[reimbursement]);
@@ -118,6 +119,10 @@ let newDisplay = (reimbursement) => {
   pendingReimbursements.innerHTML = "";
 };
 
+let newDisplay2 = (reimbursement) => {
+  resolvedReimbursements.innerHTML = "";
+};
+
 let createLi = (reimbursement) => {
 
   let li = document.createElement("li");
@@ -139,7 +144,7 @@ let createLi2 = (reimbursement) => {
   //   updateReimbursement.reason.value = reimbusement.reason;
   //   updateReimbursement.amount.value = reimbusement.amount;
   //   updateReimbursement.date.value = reimbusement.date;
-  //   newDisplay();
+    newDisplay2();
   // });
   resolvedReimbursements.append(li);
 }

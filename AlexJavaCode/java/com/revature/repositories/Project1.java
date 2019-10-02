@@ -13,11 +13,17 @@ public interface Project1 {
 	
 	Reimbursement getReimbursement(int id);
 	
+	Reimbursement getResolvedReimbursement(int id);
+	
 	Reimbursement getReimbursement(String reason);
+	
+	Reimbursement getResolvedReimbursement(String status);
 	
 	List<User> getUsers();
 	
 	List<Reimbursement>getReimbursements();
+	
+	List<Reimbursement>getResolvedReimbursements();
 	
 	boolean createUser(User u);
 	

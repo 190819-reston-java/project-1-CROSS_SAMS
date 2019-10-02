@@ -15,7 +15,8 @@ public class DAOServices {
 	
 	public DAOServices(Project1 reimbursementDao) {
 		this.project1 = reimbursementDao;
-		this.selectedReimbursement = new Reimbursement(0, "reason", 0.00, "date");
+		this.selectedReimbursement = new Reimbursement(0, "reason", 0.00, "date", "status");
+		this.selectedUser = new User(0, "name", "email", "address", "password", "333-####");
 	}
 	
 	private User selectedUser;
@@ -46,6 +47,10 @@ public class DAOServices {
 		return project1.getReimbursements();
 	}
 	
+	public List<Reimbursement> getResolvedReimbursement() {
+		return project1.getResolvedReimbursements();
+	}
+	
 	public void updateSelectedPlayer() {
 		project1.updateUser(selectedUser);
 	}
@@ -67,6 +72,14 @@ public class DAOServices {
 			return project1.getReimbursement(Integer.parseInt(string));
 		} catch (NumberFormatException e) {
 			return project1.getReimbursement(string);
+		}
+	}
+	
+	public Reimbursement getResolvedReimbursement(String string) {
+		try {
+			return project1.getResolvedReimbursement(Integer.parseInt(string));
+		} catch (NumberFormatException e) {
+			return project1.getResolvedReimbursement(string);
 		}
 	}
 	
