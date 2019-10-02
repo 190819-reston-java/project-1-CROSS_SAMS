@@ -42,13 +42,33 @@
                     <h4>Submitted Reimbursements:</h4>
                     <!-- <p>populate with the reimbursements of selected employee</p> -->
                     <ul id="eReimbursementsResults">
-                        <form id="update-reimbursements" hidden>
-                        </form>
+
                     </ul>
+                    <form id="update-reimbursements" hidden>
+                        <input type="number" name="id" hidden placeholder=0>
+                        <input type="text" name="reason" placeholder="reason">
+                        <input type="number" name="amount" placeholder="amount">
+                        <input type="text" name="date" placeholder="date">
+                        <!-- <input type="text" name="status" placeholder="approved/denied"> -->
+                        <select name ="approveDeny">
+                            <option>Approve</option>
+                            <option>Deny</option>
+                        </select>
+                        <input type="submit" class="btn">
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <!-- <div id="rUpdater">
+        <form id="rUpdate" hidden>
+            <input type="text" name="reason" placeholder="reason">
+            <input type="number" name="amount" placeholder="amount">
+            <input type="text" name="date" placeholder="date">
+            <input type="text" name="status" placeholder="approved/denied">
+            <input type="submit" class="btn">
+        </form>
+    </div> -->
     <div id="approveDeny">
         <button class="btn">Approve</button>
         <button class="btn">Deny</button>

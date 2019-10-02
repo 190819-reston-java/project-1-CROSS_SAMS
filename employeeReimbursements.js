@@ -12,6 +12,8 @@ let eReimbursementsResults = document.getElementById("eReimbursementsResults");
 let pendingReimbursements = document.getElementById("pendingReimbursements");
 let getPendingReimbursements = document.getElementById("get-pending-reimbursements");
 let updateReimbursement = document.getElementById("update-reimbursements");
+// let updaterReimbursement = document.getElementById("rUpdate");
+
 
 eReimbursements.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -45,103 +47,13 @@ eReimbursements.addEventListener("submit", (event) => {
   } else {
     console.log("No Employee Selected. Something went wrong :(")
   }
-
-  // getPendingReimbursements.addEventListener("click", (event) => {
-  //   fetch(oUrl, { method: "GET" })
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((reimbursementsJson) => {
-  //       newDisplay();
-  //       for (let reimbursement in reimbursementsJson) {
-  //         console.log(reimbursementsJson[reimbursement]);
-  //         createLi(reimbursementsJson[reimbursement]);
-  //       }
-  //     })
-  //     .catch(console.log)
-  // });
-  
-
   
 });
-
-// getEmployeeFiles(selectedEmployee, (jsonString) => {
-//   let employeeFiles = JSON.parse(jsonString);
-//   console.log(employeeFiles);
-
-//   eReimbursementsResults.innerHTML = "";
-
-//   //for-in to loop through keys on object
-//   for (let k in employeeFiles) {
-//     let resultItem = document.createElement("li");
-//     resultItem.innerText = `${k} : ${employeeFiles[k]}`;
-//     eReimbursementsResults.appendChild(resultItem);
-//   }
-// })
-
-// function getEmployeeFiles(selectedEmployee, onSuccess) {
-//   let xhr = new XMLHttpRequest();
-
-//   xhr.addEventListener("readystatechange", () => {
-//     if (xhr.readyState === 4) {
-//       let response = xhr.response;
-//       console.log(`Response received: ${response}`);
-
-//       // Before we declare victory and call onSuccess, let's
-//       // check the status code:
-//       if (xhr.status >= 200 && xhr.status < 300) {
-//         onSuccess(response);
-//       } else {
-//         console.error(`Failure with status ${xhr.status}`);
-//       }
-//     }
-//   });
-// }
-
-// getPendingReimbursements.addEventListener("click", (event) => {
-//   const ePicker = document.getElementsByName("ePicker");
-
-//   if(ePicker==='All') {
-//     fetch(oUrl, { method: "GET" })
-//     .then((response) => {
-//       return response.json();
-//     })
-//     .then((reimbursementsJson) => {
-//       newDisplay();
-//       for (let reimbursement in reimbursementsJson) {
-//         console.log(reimbursementsJson[reimbursement]);
-//         createLi(reimbursementsJson[reimbursement]);
-//       }
-//     })
-//     .catch(console.log)
-//   } else if (ePicker==='employee1') {
-//     console.log("employee1");
-//   } else if (ePicker==='employee2') {
-//     console.log("employee2");
-//   } else if (ePicker==='employee3') {
-//     console.log("employee3");
-//   } else {
-//     console.log("no option")
-//   }
-  
-//   // fetch(oUrl, { method: "GET" })
-//   //   .then((response) => {
-//   //     return response.json();
-//   //   })
-//   //   .then((reimbursementsJson) => {
-//   //     newDisplay();
-//   //     for (let reimbursement in reimbursementsJson) {
-//   //       console.log(reimbursementsJson[reimbursement]);
-//   //       createLi(reimbursementsJson[reimbursement]);
-//   //     }
-//   //   })
-//   //   .catch(console.log)
-// });
 
 updateReimbursement.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  fetch(baseUrl,
+  fetch(oUrl,
     { method: "PUT", body: JSON.stringify(reimbursementFromForm(updateReimbursement)) }
   )
     .then((response) => {
@@ -154,29 +66,34 @@ updateReimbursement.addEventListener("submit", (event) => {
       updateReimbursement.hidden = true;
     })
     .catch(console.error);
-});
+})
 
 let reimbursementFromForm = (form) => {
-  let nReimbursement = {};
-  nReimbursement.reason = form.rType.value || "some reason";
-  nReimbursement.amount = form.rAmount.value || "1000";
-  nReimbursement.date = form.rDate.value || "1_1_2019";
-  return nReimbursement;
+  let reimbursement = {};
+  reimbursement.reason = form.reason.value || "some reason";
+  reimbursement.amount = form.amount.value || 0;
+  reimbursement.date = form.date.value || "1_1_2019";
+  reimbursement.status = form.status.value || "status";
+  reimbursement.id = form.id.value || 0;
+  return reimbursement;
 }
 
-let newDisplay = (reimbursement) => {
+let newDisplay = () => {
   eReimbursementsResults.innerHTML = "";
-};
+}
 
 let createLi = (reimbursement) => {
 
   let li = document.createElement("li");
-  li.innerText = `Reason: ${reimbursement.reason} Amount: $${reimbursement.amount} Date: ${reimbursement.date}`;
-  // li.addEventListener("click", () => {
-  //   updateReimbursement.reason.value = reimbusement.reason;
-  //   updateReimbursement.amount.value = reimbusement.amount;
-  //   updateReimbursement.date.value = reimbusement.date;
-  //   newDisplay();
-  // });
+  li.innerText = `Reason: ${reimbursement.reason} Amount: $${reimbursement.amount} Date: ${reimbursement.date} Status: ${reimbursement.status}`;
+  li.addEventListener("click", () => {
+    updateReimbursement.id.value = reimbursement.id;
+    updateReimbursement.reason.value = reimbursement.reason;
+    updateReimbursement.amount.value = reimbursement.amount;
+    updateReimbursement.date.value = reimbursement.date;
+    updateReimbursement.status.value = reimbursement.status;
+    updateReimbursement.hidden = false;
+    newDisplay();
+  });
   eReimbursementsResults.append(li);
-};
+}
