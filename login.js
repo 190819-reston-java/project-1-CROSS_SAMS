@@ -2,10 +2,15 @@
 
 console.log("login test");
 
-button.addEventListener("submit", ()=>{
-    //insert send/receive & landing page for login
+let sessionInfo = document.getElementById("loginForm");
+
+sessionInfo.addEventListener("submit", ()=>{
+    // event.preventDefault();
+
+   const user = document.getElementsByName("login_email");
+   console.log(user);
 });
 
-let login = document.querySelector(".user&Pass");
+// let login = document.querySelector(".user&Pass");
 
 // login.inner
