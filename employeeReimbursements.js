@@ -85,7 +85,7 @@ let newDisplay2 = () => {
 let createLi = (reimbursement) => {
 
   let li = document.createElement("li");
-  li.innerText = `ID: ${reimbursement.id} Reason: ${reimbursement.reason} Amount: $${reimbursement.amount} Date: ${reimbursement.date} Status: ${reimbursement.status}`;
+  li.innerText = `ID: ${reimbursement.id} Reason: ${reimbursement.reason} Amount: $${reimbursement.amount} Date: ${reimbursement.date} Status: ${reimbursement.status} Manager: ${reimbursement.manager}`;
   li.addEventListener("click", () => {
     updateReimbursement.id.value = reimbursement.id;
     updateReimbursement.reason.value = reimbursement.reason;
