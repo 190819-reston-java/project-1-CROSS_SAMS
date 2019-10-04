@@ -3,8 +3,10 @@
 console.log("employee Reimbursement request test");
 
 const baseUrl = "/localproject1/p1Api";
-
 const oUrl = `${baseUrl}/reimbursements`;
+const o2Url = `${baseUrl}/resolvedReimbursements`;
+const o3Url = `${baseUrl}/allReimbursements`
+
 
 let eReimbursements = document.getElementById("eReimbursements");
 let eReimbursementsResults = document.getElementById("eReimbursementsResults");
@@ -12,6 +14,12 @@ let pendingReimbursements = document.getElementById("pendingReimbursements");
 let getPendingReimbursements = document.getElementById("get-pending-reimbursements");
 let updateReimbursement = document.getElementById("update-reimbursements");
 let update = document.getElementById("rUpdate");
+let ReimbursementsResults = document.getElementById("reimbursementsResults");
+let getResolvedReimbursements = document.getElementById("get-resolved-reimbursements");
+let resolvedReimbursements = document.getElementById("resolved-reimbursements");
+
+
+
 
 
 eReimbursements.addEventListener("submit", (event) => {
@@ -22,7 +30,7 @@ eReimbursements.addEventListener("submit", (event) => {
 
 
   if(ePicker=='All') {
-    fetch(oUrl, { method: "GET" })
+    fetch(o3Url, { method: "GET" })
     .then((response) => {
       return response.json();
     })
@@ -34,12 +42,22 @@ eReimbursements.addEventListener("submit", (event) => {
       }
     })
     .catch(console.log)
-  } else if (ePicker=='employee1') {
-    console.log("employee1");
-  } else if (ePicker=='employee2') {
-    console.log("employee2");
-  } else if (ePicker=='employee3') {
-    console.log("employee3");
+
+  } else if (ePicker=='Jim') {
+    console.log("employee1 = Jim");
+    fetch(oUrl, { method: "GET" })
+    .then((response) => {
+      return response.json();
+    })
+    .then((reimbursementsJson) => {
+      newDisplay();
+      for (let reimbursement in reimbursementsJson) {
+        console.log(reimbursementsJson[reimbursement]);
+        if (reimbursement.employee != 'aemail@email.com'){
+        createLi(reimbursementsJson[reimbursement]);
+      }
+    }
+    })
   } else {
     console.log("No Employee Selected. Something went wrong :(")
   }
@@ -64,6 +82,22 @@ updateReimbursement.addEventListener("submit", (event) => {
     .catch(console.error);
 })
 
+getResolvedReimbursements.addEventListener("click", (event) => {
+  fetch(o2Url, { method: "GET" })
+    .then((response) => {
+      return response.json();
+    })
+    .then((reimbursementsJson) => {
+      // newDisplay();
+      newDisplay2();
+      for (let reimbursement in reimbursementsJson) {
+        console.log(reimbursementsJson[reimbursement]);
+        createLi2(reimbursementsJson[reimbursement]);
+      }
+    })
+    .catch(console.log)
+})
+
 let reimbursementFromForm = (form) => {
   let reimbursement = {};
   reimbursement.reason = form.reason.value || "some reason";
@@ -78,14 +112,14 @@ let newDisplay = () => {
   eReimbursementsResults.innerHTML = "";
 }
 
-let newDisplay2 = () => {
-  update.innerHTML = "";
-}
+let newDisplay2 = (reimbursement) => {
+  resolvedReimbursements.innerHTML = "";
+};
 
 let createLi = (reimbursement) => {
 
   let li = document.createElement("li");
-  li.innerText = `ID: ${reimbursement.id} Reason: ${reimbursement.reason} Amount: $${reimbursement.amount} Date: ${reimbursement.date} Status: ${reimbursement.status} Manager: ${reimbursement.manager}`;
+  li.innerText = `ID: ${reimbursement.id} Reason: ${reimbursement.reason} Amount: $${reimbursement.amount} Date: ${reimbursement.date} Status: ${reimbursement.status}`;
   li.addEventListener("click", () => {
     updateReimbursement.id.value = reimbursement.id;
     updateReimbursement.reason.value = reimbursement.reason;
@@ -101,7 +135,7 @@ let createLi = (reimbursement) => {
 let createLi2 = (reimbursement) => {
 
   let li = document.createElement("li");
-  li.innerText = `ID: ${reimbursement.id} Reason: ${reimbursement.reason} Amount: $${reimbursement.amount} Date: ${reimbursement.date} Status: ${reimbursement.status}`;
+  li.innerText = `ID: ${reimbursement.id} Reason: ${reimbursement.reason} Amount: $${reimbursement.amount} Date: ${reimbursement.date} Status: ${reimbursement.status}  Manager: ${reimbursement.manager}`;
   li.addEventListener("click", () => {
     updateReimbursement.id.value = reimbursement.id;
     updateReimbursement.reason.value = reimbursement.reason;
@@ -111,5 +145,5 @@ let createLi2 = (reimbursement) => {
     updateReimbursement.hidden = false;
     newDisplay2();
   });
-  eReimbursementsResults.append(li);
+  resolvedReimbursements.append(li);
 }

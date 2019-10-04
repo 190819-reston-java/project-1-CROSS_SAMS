@@ -3,7 +3,6 @@
 console.log("manager homepage test");
 
 const baseUrl = "/localproject1/p1Api";
-
 const oUrl = `${baseUrl}/employees`;
 
 let employeeList = document.getElementById("employee-list");
@@ -59,7 +58,7 @@ getEmployees.addEventListener("click", (event) => {
   let createLi = (employee) => {
   
     let li = document.createElement("li");
-    li.innerText = `Name: ${employee.name} | Email: $${employee.email} | Address: ${employee.address} | Password: ${employee.password} | Phone: ${employee.phone}`;
+    li.innerText = `Name: ${employee.name} | Email: ${employee.email} | Address: ${employee.address} | Password: ${employee.password} | Phone: ${employee.phone}`;
     
     employeeList.append(li);
   }

@@ -6,6 +6,7 @@ const baseUrl = "/localproject1/p1Api";
 
 const oUrl = `${baseUrl}/reimbursements`;
 const o2Url = `${baseUrl}/resolvedReimbursements`;
+const o3Url = `${baseUrl}/managerReimbursements`;
 
 let newReimbursement = document.getElementById("reimbursementForm");
 let pendingReimbursements = document.getElementById("pendingReimbursements");
@@ -20,7 +21,7 @@ newReimbursement.addEventListener("submit", (event) => {
 
   console.log(reimbursementFromForm(newReimbursement));
 
-  fetch(oUrl,
+  fetch(o3Url,
     { method: "POST", body: JSON.stringify(reimbursementFromForm(newReimbursement)) }
   )
     .then((response) => {
@@ -36,7 +37,7 @@ newReimbursement.addEventListener("submit", (event) => {
 });
 
 getPendingReimbursements.addEventListener("click", (event) => {
-  fetch(oUrl, { method: "GET" })
+  fetch(o3Url, { method: "GET" })
     .then((response) => {
       return response.json();
     })
