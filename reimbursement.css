@@ -1,0 +1,70 @@
+.navbar {
+    border-bottom: solid black;
+    background-color: rgb(230, 230, 230);
+}
+
+body {
+    background-color: lightgray;
+}
+
+#title {
+    text-align: center;
+    padding: 2px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-decoration: underline;
+
+}
+
+#button {
+    padding: 3%;
+    text-align: center;
+}
+
+#reimbursementForm {
+    margin-top: 2%;
+    margin-left: 2%;
+    padding: 3%;
+    border-left: solid black;
+    border-right: solid black;
+}
+
+#nReimbursements {
+    text-align: center;
+    text-decoration: underline;
+    
+}
+
+#pReimbursements {
+    text-align: center;
+    text-decoration: underline;
+    /* border-radius: 100%; */
+}
+
+#rReimbursements {
+    text-align: center;
+    text-decoration: underline;
+}
+
+#rAmount {
+    margin-top: 2%;
+}
+
+#pReimbursementsBody {
+    text-align: center;
+    padding: 3%;
+    border-left: solid black;
+    border-right: solid black;
+}
+
+#rReimbursementsBody {
+    text-align: center;
+    margin-right: 2%;
+    padding: 3%;
+    border-left: solid black;
+    border-right: solid black;
+}
+
+#nReimbursementsImg {
+    text-align: center;
+}

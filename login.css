@@ -1,0 +1,23 @@
+#welcome {
+    display: block;
+    text-align: center;
+    text-decoration-color: blue;
+    margin-top: 20px;
+    background-color: rgb(230, 230, 230);
+    text-decoration: underline;
+}
+
+body {
+    background-color: lightgray;
+    margin-top:25px;
+}
+
+#user-Pass {
+    text-align : center;
+    vertical-align: center;
+    margin-top:200px;
+}
+
+#logo {
+    text-align: center;
+}

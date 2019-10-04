@@ -1,0 +1,53 @@
+body {
+    height: 100%;
+    align-self: auto;
+  }
+  
+  body {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    background-color: #173248;
+    color: white;
+  }
+
+  .form-signin {
+    width: 100%;
+    max-width: 333px;
+    padding: 0px;
+    margin: 0 auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  .form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    font-size: 30px;
+    text-align: center;
+  }
+  .form-signin .form-control:focus {
+    z-index: 2;
+    text-align: center;
+  }
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  
+  .submit{
+text-align: center;
+  }
+
+  .photo_div{
+      text-align: center;
+  }
+  
+  #login{
+      size: 300px;
+  }

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="employee.css" type="text/css">
+    <title>Employee Page</title>
+</head>
+
+<body>
+    <nav class="navbar nav-pills navbar-expand-">
+        <a class="navbar-brand">Employee Portal</a>
+        <a class="nav-link active" href="employee.html">Home</a>
+        <a class="nav-link" href="reimbursement.html">Reimbursement</a>
+        <a class="nav-link" href="login.html">Logout</a>
+
+    </nav>
+    <div id="title">
+        <h4>Welcome to the employee page!</h4>
+    </div>
+    <div id="eInfo">
+        <h3>Employee Information</h3>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+
+            <button type="submit" class="btn" id="get-employees">View employee Information</button>
+            <form id="update-employee" hidden>
+                    <span>ID:</span>
+                    <input type="number" name="id" placeholder=0 readonly>
+                    <input type="text" name="address" placeholder="address">
+                    <input type="text" name="password" placeholder="password">
+                    <input type="text" name="phone" placeholder="phone">
+                    <input type="submit" class="btn">
+                </form>
+            <!-- <ul id="employee-list">
+                <form id="employee-form"></form>
+            </ul> -->
+
+            <!-- potentially switch to 2 "2" columns and right align returned info -->
+            <!-- <div id="jTitle">
+                <h5>Position:</h5>
+            </div>
+            <div id="name">
+                <h5>Name:</h5>
+            </div>
+            <div id="email">
+                <h5>Email Address:</h5>
+            </div>
+            <div id="address">
+                <h5>Address:</h5>
+            </div>
+            <div id="pNumber">
+                <h5>Phone Number:</h5>
+            </div> -->
+            <!-- <div id="lButton">
+                <button class="btn">Update Information</button>
+            </div> -->
+            <!-- <div id="popup" class="popup" onclick="updateInfo()">Update Information
+                <form class="popupform" id="updatePopup">
+                    <h5>Email Address:</h5>
+                    <input type="email" name="uEmail" placeholder="email@something.com">
+                    <h5>Address:</h5>
+                    <input type="text" name="uAddress" placeholder="Address, City, State, Zip">
+                    <h5>Phone Number:</h5>
+                    <input type="number" name="uPhone" placeholder="###-###-####">
+                    <input id="updateSubmit" type="submit" class="btn" name="uSubmit">
+                </form>
+            </div> -->
+        </div>
+
+        <div class="col-sm-4">
+            <div class="mid">
+                <!-- <p>generic business photo or company logo</p> -->
+                <ul id="employee-list">
+                        <form id="employee-form"></form>
+                    </ul>
+
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div id="pic">
+                <img class="pic" src="BlankProfile.png" alt="please upload user photo">
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="employee.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+.navbar {
+    border-bottom: solid black;
+    background-color: rgb(230, 230, 230);
+}
+
+body {
+    background-color: lightgray;
+}
+
+.row {
+    width : 100%;
+}
+
+#eReimbursements {
+    margin-left: 30px;
+    margin-top : 10px;
+    text-align : center;
+}
+
+#button {
+    margin-top : 10px;
+    margin-left : 10px;
+    text-align: center;
+}
+
+#returnedEmployeeReimbursements {
+    text-align: center;
+}
+
+#approveDeny{
+    text-align: center;
+    margin-top:30%;
+}
+
+#employeeReimbursements {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#get-resolved-reimbursements {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+#returnedEmployeeReimbursements {
+    margin-top: 20px;
+}
+
+#eReimbursements {
+    margin-top: 20px;
+}

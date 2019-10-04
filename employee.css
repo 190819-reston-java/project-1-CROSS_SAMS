@@ -1,0 +1,102 @@
+.navbar {
+    border-bottom: solid black;
+    background-color: rgb(230, 230, 230);
+}
+
+body {
+    background-color: lightgray;
+}
+
+#title {
+    text-align: center;
+    padding: 2px;
+    margin-top: 10px;
+}
+
+#eInfo {
+    text-align: center;
+    margin-top: 5px;
+    text-decoration: underline;
+}
+
+#jTitle {
+margin-bottom: 5%;
+}
+
+#name {
+    margin-bottom: 5%;
+}
+
+#email {
+    margin-bottom: 5%;
+}
+
+#address {
+    margin-bottom: 5%;
+}
+
+#pNumber {
+    margin-bottom: 5%;
+}
+
+#name {
+    margin-bottom: 5%;
+}
+
+#pic {
+    text-align: center;
+}
+
+.row {
+    margin: 5%;
+}
+
+.mid {
+    text-align: center;
+}
+
+#rbutton {
+    text-align: center;
+    padding-top: 15px;
+}
+
+#lButton {
+    margin-left: 10px;
+}
+
+#updateSubmit {
+    margin-top : 5px;
+}
+
+#popup {
+    background: lightgray;
+    padding : 10px;
+    border-radius: 10px;
+}
+
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+.popup .popupform {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+  }
